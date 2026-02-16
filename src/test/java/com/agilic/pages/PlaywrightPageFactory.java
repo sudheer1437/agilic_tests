@@ -1,5 +1,11 @@
 package com.agilic.pages;
 
+import com.microsoft.playwright.Page;
+import com.microsoft.playwright.Locator;
+import com.microsoft.playwright.options.AriaRole;
+
+import java.lang.reflect.Field;
+
 public class PlaywrightPageFactory {
     public static void initElements(Page page, Object obj) {
         Class<?> clazz = obj.getClass();
