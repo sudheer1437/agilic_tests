@@ -1,7 +1,19 @@
 package com.agilic.pages;
 
 import com.agilic.driver.PlayWrightDriver;
+import com.microsoft.playwright.Download;
+import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.microsoft.playwright.options.LoadState;
+import com.microsoft.playwright.options.WaitForSelectorState;
+import net.serenitybdd.core.Serenity;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Objects;
+import java.util.regex.Pattern;
 
 public abstract class PlaywrightPageObject {
     protected Page page;

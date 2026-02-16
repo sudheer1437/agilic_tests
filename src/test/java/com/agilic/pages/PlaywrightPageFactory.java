@@ -5,6 +5,8 @@ import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.options.AriaRole;
 
 import java.lang.reflect.Field;
+import java.util.Locale;
+import java.util.regex.Pattern;
 
 public class PlaywrightPageFactory {
     public static void initElements(Page page, Object obj) {
