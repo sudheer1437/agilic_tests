@@ -4,3 +4,4 @@ Feature: Google Search
         Given user opens the Google homepage
         When user enters "Cucumber BDD" into the search bar
         Then user clicks "Google Search" button
+        #And click on "My View > Profile" menu
