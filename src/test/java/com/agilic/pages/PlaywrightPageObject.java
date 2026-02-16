@@ -1,5 +1,8 @@
 package com.agilic.pages;
 
+import com.agilic.driver.PlayWrightDriver;
+import com.microsoft.playwright.Page;
+
 public abstract class PlaywrightPageObject {
     protected Page page;
     private final PlayWrightDriver playWrightDriver = new PlayWrightDriver();
