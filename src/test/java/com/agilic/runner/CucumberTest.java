@@ -8,8 +8,10 @@ import io.cucumber.junit.CucumberSerenityRunner;
 @RunWith(CucumberSerenityRunner.class)
 @CucumberOptions(
         features = {"src/test/resources/features"},
-        glue = {"com.agilic.stepdefinitions"},
-        tags="@search"
+        glue = {"com.agilic.stepdefinitions", "com.agilic.hooks"},
+        //tags="@links"
+        //tags="@security"
+        tags="@login or @signout or @security or @links"
 )
-public class CucumberTestRunner {
+public class CucumberTest {
 }

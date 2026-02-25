@@ -49,12 +49,14 @@
             <version>1.5.16</version>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.13</version>
+            <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
 
     <build>
@@ -65,6 +67,7 @@
                 <version>${maven-surefire-plugin}</version>
                 <configuration>
                     <skip>true</skip>
+                    <useModulePath>false</useModulePath>
                 </configuration>
             </plugin>
             <plugin>
@@ -74,12 +77,9 @@
                     <!-- <parallel>methods</parallel>
                     <threadCount>10</threadCount> -->
                     <includes>
-                        <!-- <include>**/*Test.java</include>
-                        <include>**/Test*.java</include> -->
-                        <include>**/When*.java</include>
-                        <include>**/*Story.java</include>
-                        <include>**/*Cucumber.java</include>
+                        <!-- <include>**/*Test.java</include>-->
                         <include>**/*CucumberTestRunner.java</include>
+                        <include>**/CucumberTest.java</include>
                     </includes>
                     <argLine>-Xmx512m</argLine>
                 </configuration>
