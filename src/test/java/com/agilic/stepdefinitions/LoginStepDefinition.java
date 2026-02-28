@@ -28,11 +28,6 @@ public class LoginStepDefinition {
         loginSteps.loginWith(email,password);
     }
 
-    @And("user clicks on SignIn button")
-    public void clickOnSignInButton(){
-        loginSteps.clickOnSignButton();
-    }
-
     @And("user presses enter button")
     public void pressEnterButton(){
         loginSteps.pressEnterButton();
@@ -83,6 +78,11 @@ public class LoginStepDefinition {
 
     @And("user clicks on {string} button")
     public void clickOnButton(String button){
+        loginSteps.clickOnButton(button);
+    }
+
+    @And("user clicks on browser's {string} button")
+    public void clickOnBrowserButton(String button){
         browserSteps.clickOnBrowserButton(button);
     }
 
@@ -94,11 +94,6 @@ public class LoginStepDefinition {
     @Then("{string} modal should be displayed")
     public void checkModalVisibility(String modal){
         loginSteps.checkModalVisibility(modal);
-    }
-
-    @Then("user clicks on Cancel button in modal")
-    public void clickOnCancelButtonInModal(){
-        loginSteps.clickOnCancelButtonInModal();
     }
 
     @And("user should see Sign In button")

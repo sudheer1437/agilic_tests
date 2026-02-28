@@ -1,15 +1,14 @@
 package com.agilic.steps;
 
-import com.agilic.driver.PlayWrightDriver;
 import com.agilic.pages.LoginPage;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.WaitUntilState;
+import net.serenitybdd.annotations.Step;
 import net.serenitybdd.annotations.Steps;
 import net.thucydides.core.steps.ScenarioSteps;
 import net.thucydides.model.environment.SystemEnvironmentVariables;
 import net.thucydides.model.util.EnvironmentVariables;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class LoginSteps extends ScenarioSteps {
@@ -33,10 +32,6 @@ public class LoginSteps extends ScenarioSteps {
         loginPage.waitForElementToBeVisible(loginPage.emailTextBox);
         loginPage.enterEmail(email);
         loginPage.enterPassword(password);
-    }
-
-    public void clickOnSignButton(){
-        loginPage.clickSignInButton();
     }
 
     public void pressEnterButton(){
@@ -70,14 +65,11 @@ public class LoginSteps extends ScenarioSteps {
         loginPage.checkForUserNotRegisteredMessage();
     }
 
-    public void clickOnCancelButtonInModal(){
-        loginPage.clickOnCancelButtonInModal();
-    }
-
     public void userShouldSeeSignInButton(){
         assertTrue(loginPage.isSignInButtonVisible());
     }
 
+    @Step("Click on Link")
     public void clickOnLink(String linkName){
         loginPage.clickOnLink(linkName);
     }
@@ -88,5 +80,9 @@ public class LoginSteps extends ScenarioSteps {
 
     public void checkModalIsClosed(String modal){
         assertTrue(loginPage.checkModalInVisibility(modal));
+    }
+
+    public void clickOnButton(String button){
+        loginPage.clickOnButton(button);
     }
 }

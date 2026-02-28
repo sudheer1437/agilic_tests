@@ -17,7 +17,7 @@ Feature: Signout Validation
   @security
   Scenario: Browser back should not restore session or navigate to summary page
     When user signs out
-    And user clicks on "back" button
+    And user clicks on browser's "back" button
     Then user should be redirected to login page
 
   @security

@@ -4,8 +4,6 @@ import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
 import com.microsoft.playwright.options.WaitForSelectorState;
-import io.cucumber.java.eo.Do;
-import org.mockito.internal.matchers.Not;
 
 public class LoginPage extends PlaywrightPageObject {
 
@@ -37,7 +35,7 @@ public class LoginPage extends PlaywrightPageObject {
         this.emailTextBox = page.getByRole(AriaRole.TEXTBOX,new Page.GetByRoleOptions().setName("Email"));
         this.passwordTextBox = page.getByRole(AriaRole.TEXTBOX,new Page.GetByRoleOptions().setName("Password"));
         this.signInButton = page.getByRole(AriaRole.BUTTON,new Page.GetByRoleOptions().setName("Sign In"));
-        this.invalidCredentialsMessage=page.locator(".p-toast-detail").filter(new Locator.FilterOptions().setHasText("auth/invalid-credential"));;
+        this.invalidCredentialsMessage=page.locator(".p-toast-detail").filter(new Locator.FilterOptions().setHasText("auth/invalid-credential"));
         this.emailRequiredMessage=page.getByText("Email is required.",new Page.GetByTextOptions().setExact(true));
         this.passwordRequiredMessage=page.getByText("Password is required.",new Page.GetByTextOptions().setExact(true));
         this.userNotRegisteredMessage=page.getByText("User email is not verified yet!",new Page.GetByTextOptions().setExact(true));
@@ -102,6 +100,23 @@ public class LoginPage extends PlaywrightPageObject {
         }
     }
 
+    public void clickOnButton(String button){
+        switch (button) {
+
+            case "SignIn":
+                signInButton.waitFor();
+                signInButton.click();
+
+            case "Cancel":
+                modalCancelButton.waitFor();
+                modalCancelButton.click();
+
+
+            default:
+                throw new IllegalArgumentException("Irrelevant button");
+        }
+    }
+
     public boolean checkModalInVisibility(String modal){
         switch (modal) {
             case "Terms & Conditions":
@@ -121,44 +136,8 @@ public class LoginPage extends PlaywrightPageObject {
         }
     }
 
-    public void clickOnCancelButtonInModal(){
-        modalCancelButton.click();
-    }
-
-    public boolean validateCloseOfTermsAndConditionModal(){
-        return termsAndConditionsModal.isVisible();
-    }
-
     public boolean isSignInButtonVisible(){
         return signInButton.isVisible();
-    }
-
-    public void clickOnPrivacyPolicyLink(){
-        privacyPolicyLink.click();
-    }
-
-    public void validatePrivacyPolicyModal(){
-        privacyPolicyModal.waitFor();
-    }
-
-    public void clickOnReadMeLink(){
-        readMeLink.click();
-    }
-
-    public void checkAndCloseReadMeModal(){
-        readMeModal.waitFor();
-        readMeModal.click();
-        modalCancelButton.click();
-    }
-
-    public void clickOnDoNotSharePersonalInformationLink(){
-        doNotSharePersonalInformationLink.click();
-    }
-
-    public void checkAndCloseDoNotSharePersonalInformationModal(){
-        doNotSharePersonalInformationModal.waitFor();
-        doNotSharePersonalInformationModal.click();
-        modalCancelButton.click();
     }
 
     public void enterEmail(String email){
@@ -167,10 +146,6 @@ public class LoginPage extends PlaywrightPageObject {
 
     public void enterPassword(String password){
         passwordTextBox.fill(password);
-    }
-
-    public void clickSignInButton() {
-        signInButton.click();
     }
 
     public void pressEnterButton(){
