@@ -7,12 +7,9 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.annotations.Steps;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 public class summaryPageStepDefinition {
 
-    private static final Log log = LogFactory.getLog(summaryPageStepDefinition.class);
     @Steps
     SummarySteps summarySteps;
 
@@ -23,7 +20,7 @@ public class summaryPageStepDefinition {
     public void signInUser(String email, String password){
         loginSteps.navigateAgilicLoginPage();
         loginSteps.loginWith(email,password);
-        loginSteps.clickOnSignButton();
+        loginSteps.clickOnButton("SignIn");
         summarySteps.waitTillUserDirectedToSummaryPage();
     }
 

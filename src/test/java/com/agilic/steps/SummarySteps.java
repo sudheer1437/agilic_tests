@@ -11,14 +11,16 @@ public class SummarySteps extends ScenarioSteps {
     @Steps
     SummaryPage summaryPage;
 
-    @Steps
-    LoginSteps loginSteps;
-
     public void waitTillUserDirectedToSummaryPage(){
         summaryPage.waitTillSummaryPageLoaded();
+        summaryPage.verifyPageStructure();
+        summaryPage.verifyUserSession();
     }
 
     public void clickSignOut(){
         summaryPage.clickOnSignOutButton();
     }
+
+
+
 }
