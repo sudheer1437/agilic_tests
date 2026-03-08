@@ -4,12 +4,17 @@ import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.WaitForSelectorState;
 
-public class SummaryPage extends PlaywrightPageObject {
+public class SummaryPage extends AgilicHomePage {
     public Locator summaryHeader;
     public Locator loadingSpinner;
     public Locator signOut;
     public Locator myProfileAvatar;
-    public Locator sidebar;
+
+    public Locator cardView;
+    public Locator listsView;
+    public Locator reportingButton;
+    public Locator myProfileButton;
+    public Locator settingsButton;
 
 
     public SummaryPage() {
@@ -18,7 +23,14 @@ public class SummaryPage extends PlaywrightPageObject {
         this.loadingSpinner = page.getByText("Please wait...", new Page.GetByTextOptions().setExact(true));
         this.signOut = page.getByText("Sign Out", new Page.GetByTextOptions().setExact(true));
         this.myProfileAvatar = page.locator(".p-avatar");
-        this.sidebar= page.locator("app-sidebar");
+
+        this.cardView= page.locator("img[src='assets/demo/images/navigator/card-icon.svg']");
+        this.listsView= page.locator("img[src='assets/demo/images/navigator/tab-icon.svg']");
+        this.myProfileButton=page.locator("img[src='assets/demo/images/navigator/profile-icon.svg']");
+        this.reportingButton=page.locator("img[src='assets/demo/images/navigator/report-icon.svg']");
+        this.settingsButton=page.locator("img[src='assets/demo/images/navigator/settings-icon.svg'']");
+
+
         verifyPageIdentity();
     }
 
@@ -47,8 +59,6 @@ public class SummaryPage extends PlaywrightPageObject {
             throw new IllegalStateException("User session not active");
         }
     }
-
-
 
     public void waitTillSummaryPageLoaded() {
 

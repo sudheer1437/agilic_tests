@@ -41,6 +41,7 @@ public class LoginPage extends PlaywrightPageObject {
         this.userNotRegisteredMessage=page.getByText("User email is not verified yet!",new Page.GetByTextOptions().setExact(true));
 
         this.modalCancelButton=page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Cancel"));
+
         this.termsAndConditionsLink=page.getByText("Terms & Conditions",new Page.GetByTextOptions().setExact(true));
         this.termsAndConditionsModal=page.getByText("Our services are currently in the Proof of Concept (PoC) phase and may not be fully developed. Use at your own risk.", new Page.GetByTextOptions().setExact(true));
 
