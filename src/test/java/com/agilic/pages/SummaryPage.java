@@ -13,8 +13,9 @@ public class SummaryPage extends AgilicHomePage {
     public Locator cardView;
     public Locator listsView;
     public Locator reportingButton;
-    public Locator myProfileButton;
+    public Locator myProfileSummaryButton;
     public Locator settingsButton;
+    public Locator summaryCards;
 
 
     public SummaryPage() {
@@ -24,14 +25,13 @@ public class SummaryPage extends AgilicHomePage {
         this.signOut = page.getByText("Sign Out", new Page.GetByTextOptions().setExact(true));
         this.myProfileAvatar = page.locator(".p-avatar");
 
-        this.cardView= page.locator("img[src='assets/demo/images/navigator/card-icon.svg']");
-        this.listsView= page.locator("img[src='assets/demo/images/navigator/tab-icon.svg']");
-        this.myProfileButton=page.locator("img[src='assets/demo/images/navigator/profile-icon.svg']");
-        this.reportingButton=page.locator("img[src='assets/demo/images/navigator/report-icon.svg']");
-        this.settingsButton=page.locator("img[src='assets/demo/images/navigator/settings-icon.svg'']");
+        this.cardView = page.locator("img[src='assets/demo/images/navigator/card-icon.svg']");
+        this.listsView = page.locator("img[src='assets/demo/images/navigator/tab-icon.svg']");
+        this.myProfileSummaryButton = page.locator("img[src='assets/demo/images/navigator/profile-icon.svg']");
+        this.reportingButton = page.locator("img[src='assets/demo/images/navigator/report-icon.svg']");
+        this.settingsButton = page.locator("img[src='assets/demo/images/navigator/settings-icon.svg'']");
+        this.summaryCards = page.locator("app-card-view");
 
-
-        verifyPageIdentity();
     }
 
     private void verifyPageIdentity() {
@@ -43,7 +43,7 @@ public class SummaryPage extends AgilicHomePage {
             throw new IllegalStateException("Summary header not visible");
         }
 
-        if(!sidebar.isVisible()){
+        if (!sidebar.isVisible()) {
             throw new IllegalStateException("Sidebar header not visible");
         }
     }
@@ -55,7 +55,7 @@ public class SummaryPage extends AgilicHomePage {
     }
 
     public void verifyUserSession() {
-        if (!signOut.isVisible()) {
+        if (!myProfileAvatar.isVisible()) {
             throw new IllegalStateException("User session not active");
         }
     }
@@ -70,11 +70,26 @@ public class SummaryPage extends AgilicHomePage {
         if (loadingSpinner.isVisible()) {
             loadingSpinner.waitFor(new Locator.WaitForOptions().setState(WaitForSelectorState.HIDDEN));
         }
+        verifyPageIdentity();
     }
 
-    public void clickOnSignOutButton(){
+    public void clickOnSignOutButton() {
         myProfileAvatar.click();
         signOut.waitFor();
         signOut.click();
+    }
+
+    public boolean checkForCard(String cardName) {
+        return summaryCards.getByText(cardName).isVisible();
+    }
+
+    public boolean checkForTab(String tabName) {
+        return summaryCards.getByText(tabName).isVisible();
+    }
+
+    public void clickOnElement(String elementName) {
+        if (elementName.equalsIgnoreCase("summaryLists")) {
+            listsView.click();
+        }
     }
 }

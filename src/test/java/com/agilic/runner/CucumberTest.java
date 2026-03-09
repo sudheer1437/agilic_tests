@@ -11,6 +11,7 @@ import io.cucumber.junit.CucumberSerenityRunner;
         tags="@summary"
         //tags="@security"
         //tags="@login or @signout or @security or @links"
+        //tags="@smoke"
 )
 public class CucumberTest {
 }

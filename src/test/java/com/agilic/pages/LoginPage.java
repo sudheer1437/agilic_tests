@@ -107,10 +107,12 @@ public class LoginPage extends PlaywrightPageObject {
             case "SignIn":
                 signInButton.waitFor();
                 signInButton.click();
+                break;
 
             case "Cancel":
                 modalCancelButton.waitFor();
                 modalCancelButton.click();
+                break;
 
 
             default:

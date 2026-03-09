@@ -4,7 +4,6 @@ import com.microsoft.playwright.Locator;
 
 public class AgilicHomePage extends PlaywrightPageObject {
 
-    public Locator myProfileButton;
     public Locator settingsButton;
     public Locator sidebar;
     public Locator menuOpenButton;
@@ -66,9 +65,8 @@ public class AgilicHomePage extends PlaywrightPageObject {
     public AgilicHomePage() {
         super();
 
-        this.myProfileButton=page.locator("img[src='assets/demo/images/navigator/profile-icon.svg']");
         this.settingsButton=page.locator("img[src='assets/demo/images/navigator/settings-icon.svg'']");
-        this.sidebar= page.locator("app-sidebar");
+        this.sidebar= page.locator(".layout-sidebar");
 
         this.menuOpenButton = page.locator("span:has-text('menu_open')");
         this.backButton = page.locator("img[src='assets/demo/images/navigator/BackArrow2_Trans_light.svg']");
@@ -128,7 +126,7 @@ public class AgilicHomePage extends PlaywrightPageObject {
         this.billingMenuItem = page.locator("//a[.//i[contains(@class,'pi-money-bill')]]");
         this.subscriptionManagementSubMenuItem = page.locator("//a[contains(@href,'subscription-management')]");
 
-        verifyPageIdentity();
+
     }
 
 
