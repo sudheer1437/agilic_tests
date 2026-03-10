@@ -8,7 +8,7 @@ import io.cucumber.junit.CucumberSerenityRunner;
 @CucumberOptions(
         features = {"src/test/resources/features"},
         glue = {"com.agilic.stepdefinitions", "com.agilic.hooks"},
-        tags="@summary"
+        tags="@reporting"
         //tags="@security"
         //tags="@login or @signout or @security or @links"
         //tags="@smoke"

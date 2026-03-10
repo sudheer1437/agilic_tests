@@ -19,7 +19,7 @@ Feature: Login Authentication
     Given user navigates to Agilic Login Page
     When user signs in with "vobawe9654@deposin.com" and password "Train_88"
     And user presses enter button
-    Then user should be navigated to Summary Page
+    Then user navigates to Summary Page
 
   @security
   Scenario: Unverified user cannot signin

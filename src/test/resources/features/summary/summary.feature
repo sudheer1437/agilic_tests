@@ -13,8 +13,9 @@ Feature: Summary Page Functionality Validation
       | Tagged |
       | RIDE |
 
-    When user should be navigated to Summary Page
+    When user navigates to Summary Page
     Then Verify Summary page cards exists
 
     And When user clicks on Lists View
     Then Verify Summary page tabs exists
+

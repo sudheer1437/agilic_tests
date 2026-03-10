@@ -33,7 +33,7 @@ public class LoginStepDefinition {
         loginSteps.pressEnterButton();
     }
 
-    @Then("user should be navigated to Summary Page")
+    @Then("user navigates to Summary Page")
     public void userShouldBeNavigatedToSummaryPage(){
         summarySteps.waitTillUserDirectedToSummaryPage();
     }
